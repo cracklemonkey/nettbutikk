@@ -1,5 +1,5 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>DCS har er en ny oppstartet nettbuikk fokuserer på album</h1>
   </div>
 </template>
