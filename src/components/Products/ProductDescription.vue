@@ -7,6 +7,9 @@
           
 
       </ul>
+      <div>
+          <product-feedback/>
+      </div>
       
       <p>{{errorMassage}}</p>
       
@@ -14,11 +17,14 @@
 </template>
 
 <script>
-
+import ProductFeedback from './ProductFeedback.vue'
 import axios from 'axios'
 export default {
     name: 'ProductDetails',
     
+    components:{
+        ProductFeedback
+    },
     created() {
         console.log(this.$route.params.id )
         this.getProductDetails(this.$route.params.id)
