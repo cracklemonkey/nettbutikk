@@ -1,12 +1,26 @@
 <template>
   <section>
       <h1>Produkt informasjon</h1>
-      <ul v-if="product && product.title">
-          <li>Tittel: {{product.title}}</li>
-          <li>Information: {{product.body}}</li>
+      <b-card no-body class="overflow-hidden" style="max-width: 540px; margin: auto;" v-if="product && product.title">
+        <b-row no-gutters>
+            <b-col md="6">
+                <b-card-img src="https://picsum.photos/400/400/?image=2" alt="Image" class="rounded-0"></b-card-img>
+            </b-col>
+            <b-col md="6">
+                <b-card-body :title="product.title">
+                <b-card-text >
+                    {{product.body}}
+                </b-card-text>
+                </b-card-body>
+            </b-col>
+        </b-row>
+  </b-card>
+      
+      
+         
           
 
-      </ul>
+    
       <div>
           <product-feedback/>
       </div>

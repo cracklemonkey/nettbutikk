@@ -1,10 +1,28 @@
 <template>
   <section class="products">
       
-          <div class="product" v-for="(product, index) in products" :key="product +index">
-              <span>{{product.title}}</span>
-               <button><router-link :to="`/products/${product.id}`">info</router-link></button>
-              <button>kjøp</button>
+    <div class="product" v-for="(product, index) in products" :key="product +index">
+        <b-card-group deck>
+                    <b-card
+                    class="card"
+                    :title="product.title"
+                    >
+                    <b-card-img src="https://picsum.photos/400/400/?image=2" alt="Image" class="rounded-0"></b-card-img>
+                    <b-button variant="secondary">kjøp</b-button>
+                    <b-button variant="secondary"><router-link :to="`/products/${product.id}`">info</router-link></b-button>
+                    
+                    </b-card>
+
+                   
+                   
+                    
+                    
+                   
+                   
+        </b-card-group>
+              
+              
+              
               
           </div>
       
@@ -44,18 +62,18 @@ export default {
 .products {
     display: flex;
     flex-wrap: wrap;
-    color: red;
+    
+    
     
 }
 .product{
     flex: 1 0 21%;
-    margin: 5px;
-    height: 100px;
-    background-color: blue;
     display: flex;
     flex-direction: column;
     
 }
+
+
 
 
 

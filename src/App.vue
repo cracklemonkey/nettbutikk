@@ -1,10 +1,24 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-default">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>|
-      <router-link to="/Products">Products</router-link>
-    </nav>
+    <div id="nav">
+      <b-navbar toggleable="lg" type="dark" variant="secondary">
+    <b-navbar-brand href="#">DCS</b-navbar-brand>
+
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <b-nav-item ><router-link to="/">Hjem</router-link></b-nav-item>
+        <b-nav-item ><router-link to="/about">Om oss</router-link></b-nav-item>
+        <b-nav-item ><router-link to="/Products">Produkter</router-link></b-nav-item>
+       
+      </b-navbar-nav>
+    </b-collapse>
+      </b-navbar>
+      
+      
+      
+    </div>
     <router-view/>
   </div>
 </template>
@@ -15,7 +29,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+ 
 }
 
 #nav {
@@ -24,10 +38,8 @@
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+
 </style>
