@@ -18,7 +18,7 @@
      
      
      
-     <div  v-for="(comment, index) in comments.reverse()" :key="comment +index">
+     <div  v-for="(comment, index) in comments" :key="comment +index">
         <b-card-group deck>
                     <b-card
                     class="card"
@@ -52,11 +52,18 @@
         ></b-form-textarea>
         <button type="submit">Post</button>
     </form>*/
-import axios from 'axios'
+//import axios from 'axios'
+import {mapGetters, mapActions} from 'vuex';
 export default {
     name: "ProductFeedback",
+    computed: mapGetters(['allComments']),
+    
+    
     created(){
-        this.getcomments()
+        //this.getcomments()
+        this.fetchComments(),
+        this.comments = this.allComments.filter(obj => obj.commentid === parseInt(this.$route.params.id))
+        console.log(this.comments)
         
       
     },
@@ -77,16 +84,23 @@ export default {
     
     
     methods:{
-        async postData(e)
+
+        ...mapActions(['fetchComments']),        
+        ...mapActions(['postComment']),
+
+        postData(e)
         {
-            axios.post("https://60c1e1184f7e880017dc0a93.mockapi.io/comments", this.posts)
+            
+            e.preventDefault()
+            console.log("d", this.posts)
+            this.postComment(this.posts)
+        },
+        /*            axios.post("https://60c1e1184f7e880017dc0a93.mockapi.io/comments", this.posts)
             .then((result)=>{
                 console.warn(result)
             })
-            e.preventDefault()
-        },
-
-       getcomments() {
+*/
+       /*getcomments() {
             axios.get('https://60c1e1184f7e880017dc0a93.mockapi.io/comments')
             .then(result => {
                 const templist = (result.data)
@@ -99,7 +113,7 @@ export default {
             }).catch(error => {
                 console.log('error', error)
             })
-        }
+        }*/
 
     }
 

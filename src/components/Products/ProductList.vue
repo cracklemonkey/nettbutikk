@@ -8,7 +8,7 @@
                     :title="product.title"
                     >
                     <b-card-img src="https://picsum.photos/400/400/?image=2" alt="Image" class="rounded-0"></b-card-img>
-                    <b-button variant="secondary">kjøp</b-button>
+                    <b-button variant="secondary">legg til handlevogn</b-button>
                     <b-button variant="secondary"><router-link :to="`/products/${product.id}`">info</router-link></b-button>
                     
                     </b-card>
