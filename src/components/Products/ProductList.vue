@@ -8,7 +8,7 @@
                     :title="product.title"
                     >
                     <b-card-img src="https://picsum.photos/400/400/?image=2" alt="Image" class="rounded-0"></b-card-img>
-                    <b-button variant="secondary">legg til handlevogn</b-button>
+                    <add-too-cart :cartTitle="product.title" />
                     <b-button variant="secondary"><router-link :to="`/products/${product.id}`">info</router-link></b-button>
                     
                     </b-card>
@@ -30,9 +30,13 @@
 </template>
 
 <script>
+
 import axios from 'axios'
+import AddTooCart from '../shoppingCart/AddTooCart.vue'
 export default {
     name: 'ProductList',
+
+    
     created(){
         this.getProducts()
         
@@ -41,6 +45,9 @@ export default {
     data: () =>({
         products: []
     }),
+    components: {
+        AddTooCart
+    },
     methods:{
         
         

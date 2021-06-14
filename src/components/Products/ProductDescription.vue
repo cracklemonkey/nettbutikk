@@ -11,6 +11,7 @@
                 <b-card-text >
                     {{product.body}}
                 </b-card-text>
+                <add-too-cart :cartTitle="product.title" />
                 </b-card-body>
             </b-col>
         </b-row>
@@ -33,11 +34,13 @@
 <script>
 import ProductFeedback from './ProductFeedback.vue'
 import axios from 'axios'
+import AddTooCart from '../shoppingCart/AddTooCart.vue'
 export default {
     name: 'ProductDetails',
     
     components:{
-        ProductFeedback
+        ProductFeedback,
+        AddTooCart
     },
     created() {
         console.log(this.$route.params.id )
