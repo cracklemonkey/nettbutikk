@@ -23,6 +23,7 @@
 
     
       <div>
+          <post-comment/>
           <product-feedback/>
       </div>
       
@@ -33,6 +34,7 @@
 
 <script>
 import ProductFeedback from './ProductFeedback.vue'
+import PostComment from './PostComment.vue'
 import axios from 'axios'
 import AddTooCart from '../shoppingCart/AddTooCart.vue'
 export default {
@@ -40,7 +42,8 @@ export default {
     
     components:{
         ProductFeedback,
-        AddTooCart
+        AddTooCart,
+        PostComment
     },
     created() {
         console.log(this.$route.params.id )

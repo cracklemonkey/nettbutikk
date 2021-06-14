@@ -22,15 +22,15 @@ const actions = {
         const result = {}
         axios.post("https://60c1e1184f7e880017dc0a93.mockapi.io/comments", {comment}.comment, {comment}.commentid)
             .then((result)=>{
-                console.warn(comment.commentid)
-                console.warn(result)
+                console.log(result)
+               
             })
         commit('postComment', result)
     }
 };
 
 const mutations = {
-    setComments:(state, comments) => (state.comments = comments),
+    setComments:(state, comment) => (state.comments = comment),
     postComment:(state, comment ) => state.comments.push(comment),
     
 };

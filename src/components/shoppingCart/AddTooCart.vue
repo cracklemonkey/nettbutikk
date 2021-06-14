@@ -30,6 +30,7 @@ export default {
      
       console.log('CI', this.cartItem)
       this.addTooCart(this.cartItem)
+      alert(`produktet : ${this.cartItem.title} er lagt til handlevognen med en pris på ${this.cartItem.price}KR`)
     }
   }
 
