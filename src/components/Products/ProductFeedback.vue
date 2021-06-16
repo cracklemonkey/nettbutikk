@@ -1,11 +1,11 @@
 <template>
     <section>
         
-     <div  v-for="(comment, index) in comments" :key="comment +index">
+     <div  v-for="(comment, index) in allComments" :key="comment +index">
         <b-card-group deck>
                     <b-card
                     class="card"
-                    :title="comment.comment"
+                    :title="comment.body"
                     >
                     
                     
@@ -38,10 +38,12 @@ export default {
     
     created(){
        
+
+       
+        console.log("sd", this.$route.params.id),
+        this.fetchComments(parseInt(this.$route.params.id))
         
-        this.fetchComments(),
-        this.comments = this.allComments.filter(obj => obj.commentid === parseInt(this.$route.params.id)).reverse()
-        console.log(this.comments)
+        
         
       
     },
@@ -49,7 +51,8 @@ export default {
     
     methods:{
 
-        ...mapActions(['fetchComments']),          
+        ...mapActions(['fetchComments']), 
+                 
     }
 
 }

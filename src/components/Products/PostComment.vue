@@ -5,7 +5,7 @@
                 id="textarea"
                 type="text"
                 name="comment"
-                v-model="posts.comment"
+                v-model="posts.body"
                 placeholder="Enter something..."
                 rows="3"
                 max-rows="6"
@@ -25,7 +25,7 @@ export default {
            posts:{
                
             commentid: parseInt(this.$route.params.id),    
-            comment: null,
+            body: null,
             
             
         },
@@ -45,6 +45,7 @@ export default {
             e.preventDefault()
             console.log("d", this.posts)
             this.postComment(this.posts)
+            
         },
 
 },

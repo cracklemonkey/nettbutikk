@@ -10,22 +10,23 @@ const getters = {
 };
 
 const actions = {
-    async fetchComments({commit}) {
-        const response = await axios.get('https://60c1e1184f7e880017dc0a93.mockapi.io/comments');
+    async fetchComments({commit}, commentid) {
+        const response = await axios.get(`http://localhost:4000/comments/${commentid}`);
 
         console.log(response.data)
-        commit('setComments', response.data)
+        commit('setComments', response.data.reverse())
 
     },
 
     async postComment({commit}, comment,) {
         const result = {}
-        axios.post("https://60c1e1184f7e880017dc0a93.mockapi.io/comments", {comment}.comment, {comment}.commentid)
+        axios.post(`http://localhost:4000/comments/`, {comment}.comment )
             .then((result)=>{
-                console.log(result)
+                
+                console.log("as", result.data)
                
             })
-        commit('postComment', result)
+        commit('postComment', result.data)
     }
 };
 

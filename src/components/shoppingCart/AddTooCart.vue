@@ -8,13 +8,13 @@
 import {mapActions} from 'vuex';
 
 export default {
-  props:['cartTitle'],
+  props:['cartTitle', 'cartPrice'],
 
   data(){
     return{
       cartItem:{
         title: this.cartTitle,
-        price: Math.floor(Math.random() * 101),
+        price: this.cartPrice,
         id: Math.floor(Math.random() * 10100090),
 
       }

@@ -9,9 +9,10 @@
             <b-col md="6">
                 <b-card-body :title="product.title">
                 <b-card-text >
-                    {{product.body}}
+                    {{product.body}}<br>
+                    <b>{{product.price}}KR</b>
                 </b-card-text>
-                <add-too-cart :cartTitle="product.title" />
+                <add-too-cart :cartTitle="product.title" :cartPrice="product.price" />
                 </b-card-body>
             </b-col>
         </b-row>
@@ -59,7 +60,7 @@ data: () => ({
 }),
 methods: {
     getProductDetails(id){
-         axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+         axios.get(`http://localhost:4000/products/${id}`)
             .then(result => {
                 this.product = result.data
             }).catch(() => {
