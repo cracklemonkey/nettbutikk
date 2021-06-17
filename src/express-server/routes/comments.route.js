@@ -3,7 +3,7 @@ const { getComments, getCommentsById, addComment} = require("../controllers/comm
 module.exports = (app) => {
     app.get('/comments', getComments)
     app.get('/comments/:commentid', getCommentsById)
-    app.post('/comments', addComment)
+    app.post('/comments/:commentid', addComment)
     
 }
 

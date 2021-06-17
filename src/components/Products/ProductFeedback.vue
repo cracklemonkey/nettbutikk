@@ -40,8 +40,8 @@ export default {
        
 
        
-        console.log("sd", this.$route.params.id),
-        this.fetchComments(parseInt(this.$route.params.id))
+        console.log("sd", this.$route.params.productsid),
+        this.fetchComments(parseInt(this.$route.params.productid))
         
         
         

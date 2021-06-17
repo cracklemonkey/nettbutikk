@@ -47,8 +47,8 @@ export default {
         PostComment
     },
     created() {
-        console.log(this.$route.params.id )
-        this.getProductDetails(this.$route.params.id)
+        console.log(this.$route.params.productid )
+        this.getProductDetails(this.$route.params.productid)
     },
     
 
@@ -59,10 +59,11 @@ data: () => ({
     errorMassage: ''
 }),
 methods: {
-    getProductDetails(id){
-         axios.get(`http://localhost:4000/products/${id}`)
+    getProductDetails(productid){
+         axios.get(`http://localhost:4000/products/${productid}`)
             .then(result => {
-                this.product = result.data
+                console.log(result.data[0])
+                this.product = result.data[0]
             }).catch(() => {
                 this.errorMassage = 'finner ingen produkter med denne IDen'
             })

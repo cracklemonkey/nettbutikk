@@ -24,7 +24,7 @@ export default {
         return {
            posts:{
                
-            commentid: parseInt(this.$route.params.id),    
+            commentid: parseInt(this.$route.params.productid),    
             body: null,
             
             

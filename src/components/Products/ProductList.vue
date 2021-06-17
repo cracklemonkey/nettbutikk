@@ -9,7 +9,7 @@
                     >
                     <b-card-img src="https://picsum.photos/400/400/?image=2" alt="Image" class="rounded-0"></b-card-img>
                     <add-too-cart :cartTitle="product.title" :cartPrice="product.price" />
-                    <b-button variant="secondary"><router-link :to="`/products/${product.id}`">info</router-link></b-button>
+                    <b-button variant="secondary"><router-link :to="`/products/${product.productid}`">info</router-link></b-button>
                     
                     </b-card>
 
