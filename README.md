@@ -20,15 +20,15 @@ npm run build
 npm run lint
 ```
 
-### Run Api server
+### Run Api server //port 3000
 ```
 cd src/express-server
 npm run devstart
 ```
 
-### Run Web-application server
+### Run Web-application server //port 4000
 ```
-node nettbutikkserver
+node nettbutikkserver 
 ```
 
 
