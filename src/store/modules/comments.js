@@ -18,12 +18,13 @@ const actions = {
 
     },
 
-    async postComment({commit}, comment, commentid) {
+    async postComment({commit}, comment, ) {
         const result = {}
-        axios.post(`http://localhost:4000/comments/${commentid}/`, {comment} )
+        axios.post(`http://localhost:4000/comments/${comment.commentid}/`, comment )
             .then((result)=>{
-                
+                console.log('co', comment)
                 console.log("as", result.data)
+                
                
             })
         commit('postComment', result.data)

@@ -24,8 +24,8 @@
 
     
       <div>
-          <post-comment/>
-          <product-feedback/>
+          <post-comment @submit="updateparent" :key="componentKey"/>
+          <product-feedback :key="componentKey"/>
       </div>
       
       <p>{{errorMassage}}</p>
@@ -38,6 +38,7 @@ import ProductFeedback from './ProductFeedback.vue'
 import PostComment from './PostComment.vue'
 import axios from 'axios'
 import AddTooCart from '../shoppingCart/AddTooCart.vue'
+
 export default {
     name: 'ProductDetails',
     
@@ -50,25 +51,35 @@ export default {
         console.log(this.$route.params.productid )
         this.getProductDetails(this.$route.params.productid)
     },
-    
+ data() {
+    return {
+        product: {},
+        errorMassage: '',
+        componentKey: 0,
+    };
+  },   
 
 
 
-data: () => ({
-    product: {},
-    errorMassage: ''
-}),
+
+
 methods: {
     getProductDetails(productid){
          axios.get(`http://localhost:4000/products/${productid}`)
             .then(result => {
-                console.log(result.data[0])
+                console.log('produckt', result.data[0])
                 this.product = result.data[0]
             }).catch(() => {
                 this.errorMassage = 'finner ingen produkter med denne IDen'
             })
 
+    },
+    updateparent(){
+        console.log('DSAD')
+        this.componentKey += 1;
+        console.log('DSAD', this.componentKey)
     }
+
 }
 }
 </script>

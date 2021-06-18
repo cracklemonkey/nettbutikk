@@ -45,6 +45,8 @@ export default {
             e.preventDefault()
             console.log("d", this.posts)
             this.postComment(this.posts)
+            this.$emit('submit')
+            
             
         },
 
