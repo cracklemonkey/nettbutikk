@@ -20,5 +20,17 @@ npm run build
 npm run lint
 ```
 
+### Run Api server
+```
+cd src/express-server
+npm run devstart
+```
+
+### Run Web-application server
+```
+node nettbutikkserver
+```
+
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
