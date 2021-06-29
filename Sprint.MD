@@ -59,7 +59,7 @@ Creata a service method for getting a specific commentfrom the database
 Configure the aspnet core api to host js-frontend(vue)   
 Configure the front-end to send request to aspnet api(instead of express)  
 
-* Feature add button to update and delete comment and products. And want to ne able to create products
+* Feature add the possiblity to update and delete comments and products. And to be able to create products
 - Story: As user i want to be able to delete comments and products in the vue app
 - Story: As user i want to be able to update comments and products in the vue app
 - Story: As user i want to be albe to create products
