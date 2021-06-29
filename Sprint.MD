@@ -1,4 +1,4 @@
-# Sprint: SPRINTNAMEHERE (29.06.2021 - 09.07.2021)
+# Sprint: Coca-Cola (29.06.2021 - 09.07.2021)
 
 
 ## Features/Stories/Tasks
@@ -17,7 +17,7 @@ Create an entityModel to save in the database/table
 Create a DbSet(efcore) for the model  
 https://docs.microsoft.com/en-us/ef/core/  
 
-* Feature: Implement CRUD for resource product
+* Feature: Implement CRUD for resource product and 
   - Story: As a system I want to CREATE products  
 Create a controller method for posting products  
 Create contract types for the model (Create/view model)  
@@ -34,9 +34,37 @@ Create a controller method for getting all products
 Create a controller method for getting one specific product    
 Creata a service method for getting all products from the database  
 Creata a service method for getting a specific product from the database  
-    
+
+* Feature: Implement CRUD for resource comment and 
+  - Story: As a system I want to CREATE comments  
+Create a controller method for posting comments  
+Create contract types for the model (Create/view model)  
+Create a service method for saving the commentto a database
+  - Story: AS a system I want to UPDATE comments  
+Create a controller method for putting comments  
+Create a contract type for updatemodel  
+Create a service method for updating the commentin a database  
+  - Story: As a system I want to DELETE comments  
+Create a controller method for deleting comments  
+Create a service method for deleting the commentin a database
+  - Story: As a system I want to READ   comments  
+Create a controller method for getting all comments   
+Create a controller method for getting one specific comment   
+Creata a service method for getting all comments from the database  
+Creata a service method for getting a specific commentfrom the database  
+
 
 * Feature: Host vue.js app with dotnet core  
   - Story: As a Developer I want to host my front-end within the dotnet core api  
 Configure the aspnet core api to host js-frontend(vue)   
 Configure the front-end to send request to aspnet api(instead of express)  
+
+* Feature add the possiblity to update and delete comments and products. And to be able to create products
+- Story: As user i want to be able to delete comments and products in the vue app
+- Story: As user i want to be able to update comments and products in the vue app
+- Story: As user i want to be albe to create products
+
+* Feature add state managment to products
+-As a developer i want to use states for products.
+
+
