@@ -30,8 +30,9 @@ exports.getCommentsById = (req, res) => {
         console.log(parseInt(req.params.commentid))
         const comment = new Comment({
             
-            body: req.body.body,
             commentid: parseInt(req.params.commentid),
+            body: req.body.body,
+            
             
         });
 

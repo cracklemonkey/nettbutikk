@@ -9,6 +9,7 @@ import {mapActions} from 'vuex';
 
 export default {
   props:['cartTitle', 'cartPrice'],
+      
 
   data(){
     return{
