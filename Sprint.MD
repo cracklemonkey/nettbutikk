@@ -60,11 +60,11 @@ Configure the aspnet core api to host js-frontend(vue)
 Configure the front-end to send request to aspnet api(instead of express)  
 
 * Feature add the possiblity to update and delete comments and products. And to be able to create products
-- Story: As user i want to be able to delete comments and products in the vue app
-- Story: As user i want to be able to update comments and products in the vue app
-- Story: As user i want to be albe to create products
+  - Story: As user i want to be able to delete comments and products in the vue app
+  - Story: As user i want to be able to update comments and products in the vue app
+  - Story: As user i want to be albe to create products
 
 * Feature add state managment to products
--As a developer i want to use states for products.
+  -As a developer i want to use states for products.
 
 
