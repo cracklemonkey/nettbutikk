@@ -17,7 +17,7 @@ Create an entityModel to save in the database/table
 Create a DbSet(efcore) for the model  
 https://docs.microsoft.com/en-us/ef/core/  
 
-* Feature: Implement CRUD for resource product and 
+* Feature: Implement CRUD for resource product
   - Story: As a system I want to CREATE products  
 Create a controller method for posting products  
 Create contract types for the model (Create/view model)  
@@ -35,7 +35,7 @@ Create a controller method for getting one specific product
 Creata a service method for getting all products from the database  
 Creata a service method for getting a specific product from the database  
 
-* Feature: Implement CRUD for resource comment and 
+* Feature: Implement CRUD for resource comment
   - Story: As a system I want to CREATE comments  
 Create a controller method for posting comments  
 Create contract types for the model (Create/view model)  
