@@ -17,7 +17,7 @@ Create an entityModel to save in the database/table
 Create a DbSet(efcore) for the model  
 https://docs.microsoft.com/en-us/ef/core/  
 
-* Feature: Implement CRUD for resource product and 
+* Feature: Implement CRUD for resource product
   - Story: As a system I want to CREATE products  
 Create a controller method for posting products  
 Create contract types for the model (Create/view model)  
@@ -35,7 +35,7 @@ Create a controller method for getting one specific product
 Creata a service method for getting all products from the database  
 Creata a service method for getting a specific product from the database  
 
-* Feature: Implement CRUD for resource comment and 
+* Feature: Implement CRUD for resource comment
   - Story: As a system I want to CREATE comments  
 Create a controller method for posting comments  
 Create contract types for the model (Create/view model)  
@@ -60,11 +60,11 @@ Configure the aspnet core api to host js-frontend(vue)
 Configure the front-end to send request to aspnet api(instead of express)  
 
 * Feature add the possiblity to update and delete comments and products. And to be able to create products
-- Story: As user i want to be able to delete comments and products in the vue app
-- Story: As user i want to be able to update comments and products in the vue app
-- Story: As user i want to be albe to create products
+  - Story: As user i want to be able to delete comments and products in the vue app
+  - Story: As user i want to be able to update comments and products in the vue app
+  - Story: As user i want to be albe to create products
 
 * Feature add state managment to products
--As a developer i want to use states for products.
+  -As a developer i want to use states for products.
 
 
