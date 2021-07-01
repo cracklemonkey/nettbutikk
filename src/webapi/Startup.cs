@@ -10,9 +10,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using WebApi.Models;
+using WebApi.Services;
 
-namespace webapi
+namespace WebApi
 {
     public class Startup
     {
@@ -27,23 +30,24 @@ namespace webapi
         public void ConfigureServices(IServiceCollection services)
         {
 
+              // requires using Microsoft.Extensions.Options
+            services.Configure<NettbutikkDatabaseSettings>(
+            Configuration.GetSection(nameof(NettbutikkDatabaseSettings)));
+
+            services.AddSingleton<INettbutikkDatabaseSettings>(sp =>
+            sp.GetRequiredService<IOptions<NettbutikkDatabaseSettings>>().Value);
+
+            
+            services.AddSingleton<ProductService>();
+            services.AddSingleton<CommentService>();
+
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "webapi", Version = "v1" });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "webapi v1"));
-            }
-
+      
             app.UseHttpsRedirection();
 
             app.UseRouting();
