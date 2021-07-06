@@ -1,7 +1,7 @@
 <template>
   <section class="products">
       
-    <div class="product" v-for="(product, index) in products" :key="product +index">
+    <div class="product" v-for="(product, index) in allProducts" :key="product +index">
         <b-card-group deck>
                     <b-card
                     class="card"
@@ -9,6 +9,7 @@
                     >
                     <b-card-img src="https://picsum.photos/400/400/?image=2" alt="Image" class="rounded-0"></b-card-img>
                     <add-too-cart :cartTitle="product.title" :cartPrice="product.price" />
+                    <remove-product :productId="product.productid"/>
                     <b-button variant="secondary"><router-link :to="`/products/${product.productid}`">info</router-link></b-button>
                     
                     </b-card>
@@ -25,41 +26,61 @@
               
               
           </div>
+          <post-product :productId="this.getNewProductId(allProducts)"/>
       
   </section>
 </template>
 
 <script>
 
-import axios from 'axios'
+
+import {mapGetters, mapActions} from 'vuex'
 import AddTooCart from '../shoppingCart/AddTooCart.vue'
+import PostProduct from './PostProduct.vue'
+import RemoveProduct from './RemoveProduct.vue'
+
+
 export default {
     name: 'ProductList',
+    computed: mapGetters(['allProducts']),
 
     
     created(){
-        this.getProducts()
+        this.fetchProducts()
+        
         
        
     },
     data: () =>({
-        products: []
+        
     }),
     components: {
-        AddTooCart
+        AddTooCart,
+        PostProduct,
+        RemoveProduct
     },
     methods:{
         
+        ...mapActions(['fetchProducts']),
+        getNewProductId(proList){
+        let highestId = 0
+        console.log('testlist', proList)
+        proList.forEach(element => {
+            if(element.productid >= highestId){
+                
+                highestId = element.productid
+                console.log("a", highestId)
+            }
+       
         
-        getProducts() {
-            axios.get('http://localhost:4000/products')
-            .then(result => {
-                this.products = result.data
-                console.log(this.products[0].price)
-            }).catch(error => {
-                console.log('error', error)
-            })
-        }
+            
+        });
+        
+        highestId+= 1
+        console.log(highestId)
+        return highestId  
+    }
+        
     }
 
 }

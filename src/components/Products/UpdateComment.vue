@@ -1,56 +1,71 @@
 <template>
-  <section>
-      <form @submit="postData" method="post">
+<section>
+    <form @submit="updateData" method="post">
+         
+        
+         
          <b-form-textarea
                 id="textarea"
                 type="text"
                 name="comment"
                 v-model="posts.body"
-                placeholder="Enter something..."
+                value=commentBody
                 rows="3"
                 max-rows="6"
                
         ></b-form-textarea>
-        <button type="submit">Post</button>
+
+       
+
+
+        <button type="submit">Update</button>
     </form>
-  </section>
+
+</section>
+  
 </template>
 
 <script>
 import {mapActions} from 'vuex';
 export default {
-    name: 'PostComment',
+    props:['id'],
+    name: 'UpdateComment',
+
     data(){
         return {
            posts:{
                
-            commentid: parseInt(this.$route.params.productid),    
+            commentid : parseInt(this.$route.params.productid),    
+            id: this.id,
             body: null,
+            
             
             
         },
         comments: {},
     
     }
-    
     },
     methods:{
 
                 
-        ...mapActions(['postComment']),
+        ...mapActions(['updateComment']),
 
-        postData(e)
+        updateData(e)
         {
             
             e.preventDefault()
-            console.log("d", this.posts)
-            this.postComment(this.posts)
-            this.$emit('updatecomments')
+            
+            
+            this.updateComment(this.posts)
+            
             
             
         },
 
 },
+
+    
 }
 </script>
 

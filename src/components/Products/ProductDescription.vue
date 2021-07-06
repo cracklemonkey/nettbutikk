@@ -1,18 +1,19 @@
 <template>
   <section>
       <h1>Produkt informasjon</h1>
-      <b-card no-body class="overflow-hidden" style="max-width: 540px; margin: auto;" v-if="product && product.title">
+      <b-card no-body class="overflow-hidden" style="max-width: 540px; margin: auto;" v-if="oneProduct && oneProduct.title">
         <b-row no-gutters>
             <b-col md="6">
                 <b-card-img src="https://picsum.photos/400/400/?image=2" alt="Image" class="rounded-0"></b-card-img>
             </b-col>
             <b-col md="6">
-                <b-card-body :title="product.title">
+                <b-card-body :title="oneProduct.title">
                 <b-card-text >
-                    {{product.body}}<br>
-                    <b>{{product.price}}KR</b>
+                    {{oneProduct.body}}<br>
+                    <b>{{oneProduct.price}}KR</b>
                 </b-card-text>
-                <add-too-cart :cartTitle="product.title" :cartPrice="product.price" />
+                <add-too-cart :cartTitle="oneProduct.title" :cartPrice="oneProduct.price" />
+                <update-product :productTitle="oneProduct.title" :productBody="oneProduct.body" :productPrice="oneProduct.price" @updateproduct="updateProducthandler" :key="updateAfterUpdateProductKey"/>
                 </b-card-body>
             </b-col>
         </b-row>
@@ -24,8 +25,8 @@
 
     
       <div>
-          <post-comment @submit="updateparent" :key="componentKey"/>
-          <product-feedback :key="componentKey"/>
+          <post-comment @updatecomments="updateParent" :key="updateAfterPostKey"/>
+          <product-feedback @update="updateParent" :key="updateAfterPostKey"/>
       </div>
       
       <p>{{errorMassage}}</p>
@@ -34,28 +35,34 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex';
 import ProductFeedback from './ProductFeedback.vue'
 import PostComment from './PostComment.vue'
-import axios from 'axios'
 import AddTooCart from '../shoppingCart/AddTooCart.vue'
+import UpdateProduct from './UpdateProduct.vue';
 
 export default {
     name: 'ProductDetails',
+    computed: mapGetters(['oneProduct']),
     
     components:{
         ProductFeedback,
         AddTooCart,
-        PostComment
+        PostComment,
+        UpdateProduct
     },
     created() {
         console.log(this.$route.params.productid )
-        this.getProductDetails(this.$route.params.productid)
+        this.fetchProductById(this.$route.params.productid)
+        
     },
  data() {
     return {
         product: {},
         errorMassage: '',
-        componentKey: 0,
+        updateAfterPostKey: 0,
+        updateAfterUpdateProductKey: 0,
+
     };
   },   
 
@@ -64,24 +71,23 @@ export default {
 
 
 methods: {
-    getProductDetails(productid){
-         axios.get(`http://localhost:4000/products/${productid}`)
-            .then(result => {
-                console.log('produckt', result.data[0])
-                this.product = result.data[0]
-            }).catch(() => {
-                this.errorMassage = 'finner ingen produkter med denne IDen'
-            })
-
+    ...mapActions(['fetchProductById']), 
+    
+    updateParent(){
+        
+        this.updateAfterPostKey += 1;
+        
     },
-    updateparent(){
-        console.log('DSAD')
-        this.componentKey += 1;
-        console.log('DSAD', this.componentKey)
+
+    updateProducthandler(){
+        
+        this.updateAfterUpdateProductKey += 1;
+        
     }
 
 }
 }
+
 </script>
 
 <style>

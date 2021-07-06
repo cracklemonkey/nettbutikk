@@ -15,6 +15,8 @@ using Microsoft.OpenApi.Models;
 using WebApi.Models;
 using WebApi.Services;
 
+
+
 namespace WebApi
 {
     public class Startup
@@ -29,7 +31,13 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options => options.AddPolicy("Cors",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                }));
               // requires using Microsoft.Extensions.Options
             services.Configure<NettbutikkDatabaseSettings>(
             Configuration.GetSection(nameof(NettbutikkDatabaseSettings)));
@@ -51,6 +59,8 @@ namespace WebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseCors("Cors");
 
             app.UseAuthorization();
 

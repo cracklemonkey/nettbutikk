@@ -8,7 +8,8 @@
                     :title="comment.body"
                     >
                     
-                    
+                    <update-comment :id="comment.id" @remove="handelUpdate"/>
+                    <remove-comment :id="comment.id"/>
                     </b-card>
 
                    
@@ -24,7 +25,10 @@
 <script>
 
 import {mapGetters, mapActions} from 'vuex';
+import RemoveComment from './RemoveComment.vue';
+import UpdateComment from './UpdateComment.vue';
 export default {
+  components: { UpdateComment, RemoveComment },
     name: "ProductFeedback",
     computed: mapGetters(['allComments']),
 
@@ -52,6 +56,11 @@ export default {
     methods:{
 
         ...mapActions(['fetchComments']), 
+
+        handelUpdate(){
+            console.log('Hei')
+            this.$emit('update')
+        }
                  
     }
 
